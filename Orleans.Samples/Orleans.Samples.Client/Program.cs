@@ -64,10 +64,8 @@ namespace Orleans.Samples.Client
                 tsk3.Start();
 
             }
-
             Console.ReadLine();
-            Console.Write(strBuild.ToString());
-            Console.ReadLine();
+            Console.Write(strBuild);
         }
 
         public static void BuyGoods(GoodsInfo goods, int count, string buyerUser)
@@ -90,6 +88,12 @@ namespace Orleans.Samples.Client
             lock (strBuild)
             {
                 strBuild.Append(msg);
+
+                if (strBuild.Length > 5000)
+                {
+                    Console.Write(strBuild);
+                    strBuild.Clear();
+                }
             }
         }
 
