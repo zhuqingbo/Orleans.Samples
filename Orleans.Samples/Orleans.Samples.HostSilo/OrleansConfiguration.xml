@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OrleansConfiguration xmlns="urn:orleans">
+  <Globals>
+    <StorageProviders>
+      <Provider Type="Orleans.Samples.StorageProvider.GoodsStorgeProvider" Name="GoodsStorgeProvider" />
+    </StorageProviders>
+    <StreamProviders>
+    </StreamProviders>
+    <SeedNode Address="127.0.0.1" Port="22222"/>
+    <Messaging ResponseTimeout="30s"/>
+  </Globals>
+  <Defaults>
+    <Networking Address="127.0.0.1" Port="22222"/>
+    <ProxyingGateway Address="127.0.0.1" Port="50000" />
+    <Tracing DefaultTraceLevel="Warning" TraceToConsole="true" TraceToFile="{0}-{1}.log" PropagateActivityId="false" BulkMessageLimit="1000">
+      <TraceLevelOverride LogPrefix="Application" TraceLevel="Info" />
+    </Tracing>
+    <Statistics MetricsTableWriteInterval="30s" PerfCounterWriteInterval="30s" LogWriteInterval="300s" WriteLogStatisticsToTable="true" StatisticsCollectionLevel="Critical"/>
+  </Defaults>
+</OrleansConfiguration>
+
+
