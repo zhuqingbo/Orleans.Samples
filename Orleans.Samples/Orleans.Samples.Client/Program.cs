@@ -18,12 +18,15 @@ namespace Orleans.Samples.Client
             var grain = GrainClient.GrainFactory.GetGrain<IGoodsInfoGrain>("suiji");
 
             var goodsList = grain.GetAllGoods().Result;
+
+            Console.WriteLine("按任意键开始购买:");
+            Console.ReadKey();
             if (goodsList != null && goodsList.Count > 0)
             {
                 Task tsk1 = new Task(() =>
                 {
                     //Random rd = new Random(10);
-                    for (int i = 0; i < 3000; i++)
+                    for (int i = 0; i < 1000; i++)
                     {
                         foreach (var item in goodsList)
                         {
@@ -36,7 +39,7 @@ namespace Orleans.Samples.Client
                 Task tsk2 = new Task(() =>
                 {
                     //Random rd = new Random(10);
-                    for (int i = 0; i < 3000; i++)
+                    for (int i = 0; i < 1000; i++)
                     {
                         foreach (var item in goodsList)
                         {
